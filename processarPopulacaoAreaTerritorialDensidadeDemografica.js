@@ -2,18 +2,14 @@ import { readdir } from "fs/promises"
 import { dirname, join } from "path"
 import { fileURLToPath } from "url"
 
-import debug from 'debug'
-import { WriteStream, createReadStream, createWriteStream } from "fs"
+import {  createReadStream } from "fs"
 import StreamConcat from "stream-concat"
 import { pipeline } from "stream/promises"
-import { Readable, Transform } from "stream"
+import { Transform } from "stream"
 
 
 import ExcelJS from 'exceljs'
 import { createObjectCsvWriter } from "csv-writer"
-
-
-const applicationLogging = debug('app:concat')
 
 const currentFile = fileURLToPath(import.meta.url)
 const __dirname = dirname(currentFile)
@@ -43,7 +39,7 @@ const csvWriter = createObjectCsvWriter({
     header: header
 });
 
-const streams = files.map( item => item.indexOf("MG") && createReadStream(join(pathContentFiles, item)))
+const streams = files.map( item => createReadStream(join(pathContentFiles, item)))
 const streamsConcateded = new StreamConcat(streams)
 
 const processExcelFiles = new Transform({
