@@ -1,0 +1,2 @@
+Fontes [Censo Demografico > 2023 > Populacao_e_domicilios]: 
+    https://ftp.ibge.gov.br/Censos/Censo_Demografico_2022/Populacao_e_domicilios_Primeiros_resultados/Historico_dos_resultados_da_1a_apuracao_20230628/xlsx/
